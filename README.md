@@ -11,6 +11,8 @@ A 16 bit Fantasy console inspired by the NES and Gameboy written in C++
     - [Registers](#registers)
     - [Flags](#flags)
 	- [Memory](#memory)
+1. [Instructions](./docs/Instructions.md)
+1. [Instructions2](https://github.com/Garoze/Console/blob/main/docs/Instructions.md)
 1. [License](#license)
 
 ## Introduction
