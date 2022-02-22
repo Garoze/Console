@@ -51,7 +51,9 @@ The CPU has a total of 19 16-bit registers, these being:
 | R1...R8       |General purpose registers                          |
 
 ### Flags
-The CPU has a total of 3 flags these being `Zero, Carry and Overflow`.
+The CPU has a total of 3¹ flags these being `Zero, Carry and Overflow`.
+
+¹ The CPU has a special flag called `status` to inform if the execution should be stoped.
 
 ## License
 
