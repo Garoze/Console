@@ -3,6 +3,7 @@
 1. [Instructions](#instructions)
 	- [Address Modes](#address)
 	- [Table](#table)
+    - [Description](#description)
 
 ## Address Mode
 
@@ -46,7 +47,7 @@ For now the **CPU** supports a total of _3 Address Modes_, these beign `Implied,
 |`0x13` |`ADI`    | 4   |`Immediate`|`ADI r1, $0010`  |`13 01 10 00` |
 |`0x14` |`ADA`    | 4   |`Absolute` |`ADA r1, [$FDFF]`|`14 01 FF FD` |
 |`0x15` |`ADR`    | 3   |`Immediate`|`ADR r1, r2`     |`15 01 02`    |
-|`0x16` |`ADR`    | 2   |`Immediate`|`ADS r1`         |`16 01`       |
+|`0x16` |`ADS`    | 2   |`Immediate`|`ADS r1`         |`16 01`       |
 |`0x17` |`SUI`    | 4   |`Immediate`|`SUI r1, $0010`  |`17 01 10 00` |
 |`0x18` |`SUA`    | 4   |`Absolute` |`SUA r1, [$DDEF]`|`18 01 EF DD` |
 |`0x19` |`SUR`    | 3   |`Immediate`|`SUR r1, r2`     |`19 01 02`    |
@@ -78,3 +79,62 @@ For now the **CPU** supports a total of _3 Address Modes_, these beign `Implied,
 |`0x33` |`RTS`    | 1   |`Implied`  |`RET`            |`33`          |
 |`0x34` |`OUT`    | 2   |`Immediate`|`OUT r1`         |`34 01`       |
 |`0x35` |`HLT`    | 1   |`Implied`  |`HLT`            |`35`          |
+
+## Description
+
+|Mnemonic | Description                                                                               |
+|---------|-------------------------------------------------------------------------------------------|
+|`NOP`    |Does Nothing                                                                               |
+|`LDI`    |Load a register with a immediate value                                                     |
+|`LDA`    |Load a register with a value from a address                                                |
+|`LDR`    |Load a register with the value from another register                                       |
+|`LDS`    |Load a register with the value from the top of the stack                                   |
+|`STR`    |Store a register value on an address                                                       |
+|`STS`    |Store the value from the top of the stack on an address                                    |
+|`INC`    |Increment by 1 an register value                                                           |
+|`DEC`    |Decrement by 1 an register value                                                           |
+|`SHL`    |Shift left an register value by a X amount                                                 |
+|`SHR`    |Shift right an register value by a X amount                                                |
+|`AND`    |Perform a bitwise AND on a register with a amount informed by the next byte in memory      |
+|`BOR`    |Perform a bitwise OR on a register with a amount informed by the next byte in memory       |
+|`XOR`    |Perform a bitwise XOR on a register with a amount informed by the next byte in memory      |
+|`NOT`    |Perform a bitwise NOT on a register                                                        |
+|`PSI`    |Push to the stack a immediate value                                                        |
+|`PSA`    |Push to the stack a value on an address                                                    |
+|`PSR`    |Push to the stack a value on a register                                                    |
+|`POP`    |Pop the value from the stack and put it on a register                                      |
+|`ADI`    |Perform the arithimetic ADD on a register with a immediate value                           |
+|`ADA`    |Perform the arithimetic ADD on a register with a value from an address                     |
+|`ADR`    |Perform the arithimetic ADD on a register with a value from another register               |
+|`ADR`    |Perform the arithimetic ADD on a register with the value from the top of the stack         |
+|`SUI`    |Perform the arithimetic SUB on a register with a immediate value                           |
+|`SUA`    |Perform the arithimetic SUB on a register with a value from an address                     |
+|`SUR`    |Perform the arithimetic SUB on a register with a value from another register               |
+|`SUS`    |Perform the arithimetic SUB on a register with the value from the top of the stack         |
+|`MUI`    |Perform the arithimetic MUL on a register with a immediate value                           |
+|`MUA`    |Perform the arithimetic MUL on a register with the value from an address                   |
+|`MUR`    |Perform the arithimetic MUL on a register with the value from another register             |
+|`MUS`    |Perform the arithimetic MUL on a register with the value from the top of the stak          |
+|`DIV`    |Perform the arithimetic DIV on a register with a immediate value                           |
+|`DIA`    |Perform the arithimetic DIV on a register with a value from an address                     |
+|`DIR`    |Perform the arithimetic DIV on a register with the value from another register             |
+|`DIS`    |Perform the arithimetic DIV on a register with the value from the top of the stack         |
+|`MOI`    |Perform the arithimetic MOD on a register with a immediate value                           |
+|`MOA`    |Perform the arithimetic MOD on a register with a value from an address                     |
+|`MOR`    |Perform the arithimetic MOD on a register with a value from another register               |
+|`MOS`    |Perform the arithimetic MOD on a register with the value from the top of the stack         |
+|`CMI`    |Compare a register with a immediate value and set the Z Flag if Reg == immediate value     |
+|`CMA`    |Compare a register with a value from an address and set the Z flag if reg == address value |
+|`CMR`    |Compare a register with another register and set the Z flag if reg == reg                  |
+|`CMS`    |Compare a register with the value from the top of the stack, and set Z flag if reg == pop  |
+|`JMP`    |Jump to a given address                                                                    |
+|`JEQ`    |Jump to a given address if the Z flag is set                                               |
+|`JNQ`    |Jump to a given address if the Z flag is not set                                           |
+|`JMC`    |Jump to a given address if the C flag is set                                               |
+|`JNC`    |Jump to a given address if the C flag is not set                                           |
+|`JMO`    |Jump to a given address if the O flag is set                                               |
+|`JNO`    |Jump to a given address if the O flag is not set                                           |
+|`JSR`    |Jump to a subroutine and push the actual PC to the stack                                   |
+|`RTS`    |Pop the value from the stack and jump to the address                                       |
+|`OUT`    |Output to the console a value from a register                                              |
+|`HLT`    |Stop the execution of the CPU                                                              |
