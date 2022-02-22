@@ -14,7 +14,7 @@ A 16 bit Fantasy console inspired by the NES and Gameboy written in C++
 
 To use this project you'll need a C/C++ compiler like [GCC](https://gcc.gnu.org/) or [Cland](https://clang.llvm.org/).
 
-This project also uses the Imhui lib to draw the interface, you can check the project [here](https://github.com/ocornut/imgui)
+This project also uses the Imgui lib to draw the interface, you can check the project [here](https://github.com/ocornut/imgui)
 
 ## Installation
 
