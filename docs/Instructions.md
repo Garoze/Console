@@ -132,8 +132,8 @@ For now the **CPU** supports a total of _3 Address Modes_, these beign `Implied,
 |`JNQ`    |Jump to a given address if the Z flag is not set                                           |
 |`JMC`    |Jump to a given address if the C flag is set                                               |
 |`JNC`    |Jump to a given address if the C flag is not set                                           |
-|`JMO`    |Jump to a given address if the O flag is set                                               |
-|`JNO`    |Jump to a given address if the O flag is not set                                           |
+|`JMO`    |Jump to a given address if the V flag is set                                               |
+|`JNO`    |Jump to a given address if the V flag is not set                                           |
 |`JSR`    |Jump to a subroutine and push the actual PC to the stack                                   |
 |`RTS`    |Pop the value from the stack and jump to the address                                       |
 |`OUT`    |Output to the console a value from a register                                              |

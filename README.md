@@ -7,6 +7,9 @@ A 16 bit Fantasy console inspired by the NES and Gameboy written in C++
 1. [Introduction](#introduction)
 	- [How use the Project](#installation)
 1. [Specs](#specs)
+    - [CPU](#cpu)
+    - [Registers](#registers)
+    - [Flags](#flags)
 	- [Memory](#memory)
 1. [License](#license)
 
@@ -32,6 +35,23 @@ To use the `Console` itself, just run
 ```bash
 ./console <rom_file>
 ```
+
+## Specs
+
+### CPU
+### Registers
+
+The CPU has a total of 19 16-bit registers, these being:
+
+|Registers Name |Description                                        |
+|---------------|---------------------------------------------------|
+| PC            |Hold the address to the next instruction on memory |
+| SP            |Indicates the address of the top of the stack      |
+| R0            |Accumulator register                               |
+| R1...R8       |General purpose registers                          |
+
+### Flags
+The CPU has a total of 3 flags these being `Zero, Carry and Overflow`.
 
 ## License
 
