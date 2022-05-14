@@ -5,8 +5,8 @@
 enum class Opcodes : std::uint8_t
 {
     NOP,
-    LDI, LDA, LDR, LDS,
-    STR, STS,
+    LDI, LDA, LDR,
+    STI, STA, STR,
     INC, DEC,
     SHL, SHR,
     AND, BOR, XOR, NOT,

@@ -7,13 +7,12 @@
 
 static const std::map<Opcodes, std::string> Mnemonic_t = {
     std::make_pair(Opcodes::NOP, "NOP"),
-    std::make_pair(Opcodes::NOP, "NOP"),
     std::make_pair(Opcodes::LDI, "LDI"),
     std::make_pair(Opcodes::LDA, "LDA"),
     std::make_pair(Opcodes::LDR, "LDR"),
-    std::make_pair(Opcodes::LDS, "LDS"),
+    std::make_pair(Opcodes::STI, "STI"),
+    std::make_pair(Opcodes::STA, "STA"),
     std::make_pair(Opcodes::STR, "STR"),
-    std::make_pair(Opcodes::STS, "STS"),
     std::make_pair(Opcodes::INC, "INC"),
     std::make_pair(Opcodes::DEC, "DEC"),
     std::make_pair(Opcodes::SHL, "SHL"),
