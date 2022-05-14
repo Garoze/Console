@@ -40,9 +40,10 @@ To use the `Console` itself, just run
 ## Specs
 
 ### CPU
-### Registers
 
 The CPU has a total of 19 16-bit registers, these being:
+
+### Registers
 
 |Registers Name |Description                                        |
 |---------------|---------------------------------------------------|
