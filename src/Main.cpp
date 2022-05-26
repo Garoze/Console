@@ -9,11 +9,12 @@ int main()
     cpu.setDebug(true);
 
     const std::vector<std::uint8_t> code = {
-        (int)Opcodes::LDI, 0x01, 0xCD, 0xAB,
-        (int)Opcodes::STR, 0xEF, 0xFF, 0x01,
-        (int)Opcodes::STA, 0xFF, 0xFF, 0xEF, 0xFF,
-        (int)Opcodes::LDA, 0x02, 0xEF, 0xFF,
-        (int)Opcodes::OUT, 0x02,
+        (int)Opcodes::LDI, 0x01, 0x01, 0x00,
+        (int)Opcodes::OUT, 0x01,
+        (int)Opcodes::INC, 0x01,
+        (int)Opcodes::OUT, 0x01,
+        (int)Opcodes::DEC, 0x01,
+        (int)Opcodes::OUT, 0x01,
         (int)Opcodes::HLT,
     };
     cpu.loadToMemory(code);

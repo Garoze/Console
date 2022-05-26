@@ -36,8 +36,8 @@ private:
     void STI(); // Store Immediate
     void STA(); // Store Absolure
     void STR(); // Store Register
-    void INC();
-    void DEC();
+    void INC(); // Increment Register
+    void DEC(); // Decrement Register
     void SHL();
     void SHR();
     void AND();

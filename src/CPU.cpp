@@ -18,6 +18,9 @@ CPU::CPU()
     opcode_t[Opcodes::STI] = &CPU::STI;
     opcode_t[Opcodes::STA] = &CPU::STA;
     opcode_t[Opcodes::STR] = &CPU::STR;
+    // Arithmetic Opcodes //
+    opcode_t[Opcodes::INC] = &CPU::INC;
+    opcode_t[Opcodes::DEC] = &CPU::DEC;
     // Stack Opcodes //
     opcode_t[Opcodes::PSI] = &CPU::PSI;
     opcode_t[Opcodes::PSA] = &CPU::PSA;
@@ -156,6 +159,18 @@ void CPU::STR()
     auto r = fetch8();
     if (flags.debug) printf("$%04X, R%d", address, r);
     bus.write16(address, registers.R[r]);
+}
+
+void CPU::INC()
+{
+    auto r = fetch8();
+    ++registers.R[r];
+}
+
+void CPU::DEC()
+{
+    auto r = fetch8();
+    --registers.R[r];
 }
 
 void CPU::PSI()
