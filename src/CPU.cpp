@@ -54,6 +54,10 @@ CPU::CPU()
     opcode_t[Opcodes::MOI] = &CPU::MOI;
     opcode_t[Opcodes::MOA] = &CPU::MOA;
     opcode_t[Opcodes::MOR] = &CPU::MOR;
+                            // CMP //
+    opcode_t[Opcodes::CMI] = &CPU::CMI;
+    opcode_t[Opcodes::CMA] = &CPU::CMA;
+    opcode_t[Opcodes::CMR] = &CPU::CMR;
     // OUT //
     opcode_t[Opcodes::OUT] = &CPU::OUT;
     // HLT //
@@ -396,6 +400,34 @@ void CPU::MOR()
     auto src = fetch8();
     if (flags.debug) printf("R%d, R%d", dst, src);
     registers.R[dst] %= registers.R[src];
+}
+
+void CPU::CMI()
+{
+    auto r = fetch8();
+    auto value = fetch16();
+    if (flags.debug) printf("R%d, #%04X", r, value);
+    flags.Z = registers.R[r] == value;
+    flags.V = registers.R[r] < value;
+}
+
+void CPU::CMA()
+{
+    auto r = fetch8();
+    auto address = fetch16();
+    auto value = bus.read16(address);
+    if (flags.debug) printf("R%d, [$%04X]", r, address);
+    flags.Z = registers.R[r] == value;
+    flags.V = registers.R[r] < value;
+}
+
+void CPU::CMR()
+{
+    auto dst = fetch8();
+    auto src = fetch8();
+    if (flags.debug) printf("R%d, R%d", dst, src);
+    flags.Z = registers.R[dst] == registers.R[src];
+    flags.V = registers.R[dst] < registers.R[src];
 }
 
 void CPU::OUT()

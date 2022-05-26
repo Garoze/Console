@@ -59,13 +59,13 @@ private:
     void MUR();
     void DIV();
     void DIA();
-    void DIR();
+    void DIR(); // DIV
     void MOI();
     void MOA();
-    void MOR();
+    void MOR(); // MOR
     void CMI();
     void CMA();
-    void CMR();
+    void CMR(); //CMP
     void JMP();
     void JEQ();
     void JNQ();
