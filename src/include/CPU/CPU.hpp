@@ -65,14 +65,14 @@ private:
     void MOR(); // MOR
     void CMI();
     void CMA();
-    void CMR(); //CMP
-    void JMP();
-    void JEQ();
-    void JNQ();
-    void JMC();
-    void JNC();
-    void JMO();
-    void JNO();
+    void CMR(); // CMP
+    void JMP(); // JMP
+    void JEQ(); // JMP if equal
+    void JNQ(); // JMP if not equal
+    void JMC(); // JMP if carry
+    void JNC(); // JMP if not carry
+    void JMV(); // JMP if Overload
+    void JNV(); // JMP if not Overload
     void JSR(); // Jump to subrotine
     void RTS(); // Return from subrotine
     void OUT(); // Print a Register value

@@ -58,6 +58,14 @@ CPU::CPU()
     opcode_t[Opcodes::CMI] = &CPU::CMI;
     opcode_t[Opcodes::CMA] = &CPU::CMA;
     opcode_t[Opcodes::CMR] = &CPU::CMR;
+    // Jump Opcodes //
+    opcode_t[Opcodes::JMP] = &CPU::JMP;
+    opcode_t[Opcodes::JEQ] = &CPU::JEQ;
+    opcode_t[Opcodes::JNQ] = &CPU::JNQ;
+    opcode_t[Opcodes::JMC] = &CPU::JMC;
+    opcode_t[Opcodes::JNC] = &CPU::JNC;
+    opcode_t[Opcodes::JMV] = &CPU::JMV;
+    opcode_t[Opcodes::JNV] = &CPU::JNV;
     // Rotine Opcodes //
     opcode_t[Opcodes::JSR] = &CPU::JSR;
     opcode_t[Opcodes::RTS] = &CPU::RTS;
@@ -431,6 +439,73 @@ void CPU::CMR()
     if (flags.debug) printf("R%d, R%d", dst, src);
     flags.Z = registers.R[dst] == registers.R[src];
     flags.V = registers.R[dst] < registers.R[src];
+}
+
+void CPU::JMP()
+{
+    auto address = fetch16();
+    if (flags.debug) printf("$%04X", address);
+    registers.PC = address;
+}
+
+void CPU::JEQ()
+{
+    if (flags.Z)
+    {
+        auto address = fetch16();
+        if (flags.debug) printf("$%04X", address);
+        registers.PC = address;
+    }
+}
+
+void CPU::JNQ()
+{
+    if (!flags.Z)
+    {
+        auto address = fetch16();
+        if (flags.debug) printf("$%04X", address);
+        registers.PC = address;
+    }
+}
+
+void CPU::JMC()
+{
+    if (flags.C)
+    {
+        auto address = fetch16();
+        if (flags.debug) printf("$%04X", address);
+        registers.PC = address;
+    }
+}
+
+void CPU::JNC()
+{
+    if (!flags.C)
+    {
+        auto address = fetch16();
+        if (flags.debug) printf("$%04X", address);
+        registers.PC = address;
+    }
+}
+
+void CPU::JMV()
+{
+    if (flags.V)
+    {
+        auto address = fetch16();
+        if (flags.debug) printf("$%04X", address);
+        registers.PC = address;
+    }
+}
+
+void CPU::JNV()
+{
+    if (!flags.V)
+    {
+        auto address = fetch16();
+        if (flags.debug) printf("$%04X", address);
+        registers.PC = address;
+    }
 }
 
 void CPU::JSR()

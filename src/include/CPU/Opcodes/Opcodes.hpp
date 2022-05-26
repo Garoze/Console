@@ -21,7 +21,7 @@ enum class Opcodes : std::uint8_t
     JMP,
     JEQ, JNQ,
     JMC, JNC,
-    JMO, JNO,
+    JMV, JNV,
     JSR,
     RTS,
     OUT,
