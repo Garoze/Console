@@ -51,26 +51,21 @@ private:
     void ADI(); // ADD to a register a Immediate value
     void ADA(); // ADD to a register a Absolute value
     void ADR(); // ADD to a register a register value
-    void SUI();
-    void SUA();
-    void SUR();
-    void SUS();
+    void SUI(); // SUB to a register a Immediate value
+    void SUA(); // SUB to a register a Absolute value
+    void SUR(); // SUB to a register a register value
     void MUI();
     void MUA();
     void MUR();
-    void MUS();
     void DIV();
     void DIA();
     void DIR();
-    void DIS();
     void MOI();
     void MOA();
     void MOR();
-    void MOS();
     void CMI();
     void CMA();
     void CMR();
-    void CMS();
     void JMP();
     void JEQ();
     void JNQ();

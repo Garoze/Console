@@ -34,9 +34,14 @@ CPU::CPU()
     opcode_t[Opcodes::INC] = &CPU::INC;
     opcode_t[Opcodes::DEC] = &CPU::DEC;
     // Arithmetic Opcodes //
+                            // ADD //
     opcode_t[Opcodes::ADI] = &CPU::ADI;
     opcode_t[Opcodes::ADA] = &CPU::ADA;
     opcode_t[Opcodes::ADR] = &CPU::ADR;
+                            // SUB //
+    opcode_t[Opcodes::SUI] = &CPU::SUI;
+    opcode_t[Opcodes::SUA] = &CPU::SUA;
+    opcode_t[Opcodes::SUR] = &CPU::SUR;
     // OUT //
     opcode_t[Opcodes::OUT] = &CPU::OUT;
     // HLT //
@@ -283,6 +288,30 @@ void CPU::ADR()
     auto src = fetch8();
     if (flags.debug) printf("R%d, R%d", dst, src);
     registers.R[dst] = registers.R[src];
+}
+
+void CPU::SUI()
+{
+    auto r = fetch8();
+    auto value = fetch16();
+    if (flags.debug) printf("R%d, #%04X", r, value);
+    registers.R[r] -= value;
+}
+
+void CPU::SUA()
+{
+    auto r = fetch8();
+    auto address = fetch16();
+    if (flags.debug) printf("R%d, [$%04X]", r, address);
+    registers.R[r] -= bus.read16(address);
+}
+
+void CPU::SUR()
+{
+    auto dst = fetch8();
+    auto src = fetch8();
+    if (flags.debug) printf("R%d, R%d", dst, src);
+    registers.R[dst] -= registers.R[src];
 }
 
 void CPU::OUT()
