@@ -18,9 +18,6 @@ CPU::CPU()
     opcode_t[Opcodes::STI] = &CPU::STI;
     opcode_t[Opcodes::STA] = &CPU::STA;
     opcode_t[Opcodes::STR] = &CPU::STR;
-    // Arithmetic Opcodes //
-    opcode_t[Opcodes::INC] = &CPU::INC;
-    opcode_t[Opcodes::DEC] = &CPU::DEC;
     // Bitwise Opcodes //
     opcode_t[Opcodes::SHL] = &CPU::SHL;
     opcode_t[Opcodes::SHR] = &CPU::SHR;
@@ -33,6 +30,13 @@ CPU::CPU()
     opcode_t[Opcodes::PSA] = &CPU::PSA;
     opcode_t[Opcodes::PSR] = &CPU::PSR;
     opcode_t[Opcodes::POP] = &CPU::POP;
+    // Increment Opcodes //
+    opcode_t[Opcodes::INC] = &CPU::INC;
+    opcode_t[Opcodes::DEC] = &CPU::DEC;
+    // Arithmetic Opcodes //
+    opcode_t[Opcodes::ADI] = &CPU::ADI;
+    opcode_t[Opcodes::ADA] = &CPU::ADA;
+    opcode_t[Opcodes::ADR] = &CPU::ADR;
     // OUT //
     opcode_t[Opcodes::OUT] = &CPU::OUT;
     // HLT //
@@ -168,20 +172,6 @@ void CPU::STR()
     bus.write16(address, registers.R[r]);
 }
 
-void CPU::INC()
-{
-    auto r = fetch8();
-    if (flags.debug) printf("INC R%d", r);
-    ++registers.R[r];
-}
-
-void CPU::DEC()
-{
-    auto r = fetch8();
-    if (flags.debug) printf("DEC R%d", r);
-    --registers.R[r];
-}
-
 void CPU::SHL()
 {
     auto r = fetch8();
@@ -255,6 +245,44 @@ void CPU::POP()
     auto r = fetch8();
     if (flags.debug) printf("R%d", r);
     registers.R[r] = stackPop();
+}
+
+void CPU::INC()
+{
+    auto r = fetch8();
+    if (flags.debug) printf("INC R%d", r);
+    ++registers.R[r];
+}
+
+void CPU::DEC()
+{
+    auto r = fetch8();
+    if (flags.debug) printf("DEC R%d", r);
+    --registers.R[r];
+}
+
+void CPU::ADI()
+{
+    auto r = fetch8();
+    auto value = fetch16();
+    if (flags.debug) printf("ADI R%d, #%04X", r, value);
+    registers.R[r] += value;
+}
+
+void CPU::ADA()
+{
+    auto r = fetch8();
+    auto address = fetch16();
+    if (flags.debug) printf("ADA R%d, [$%04X]", r, address);
+    registers.R[r] += bus.read16(address);
+}
+
+void CPU::ADR()
+{
+    auto dst = fetch8();
+    auto src = fetch8();
+    if (flags.debug) printf("ADR R%d, R%d", dst, src);
+    registers.R[dst] = registers.R[src];
 }
 
 void CPU::OUT()

@@ -36,22 +36,21 @@ private:
     void STI(); // Store Immediate
     void STA(); // Store Absolure
     void STR(); // Store Register
-    void INC(); // Increment Register
-    void DEC(); // Decrement Register
     void SHL(); // Shift Register Left
     void SHR(); // Shift Register Right
-    void AND(); // And Register
-    void BOR(); // Or Register
-    void XOR(); // Xor Register
-    void NOT();
-    void PSI();
-    void PSA();
-    void PSR();
-    void POP();
-    void ADI();
-    void ADA();
-    void ADR();
-    void ADS();
+    void AND(); // AND Register
+    void BOR(); // BOR Register
+    void XOR(); // XOR Register
+    void NOT(); // NOT Register
+    void PSI(); // Push Immediate
+    void PSA(); // Push Absolure
+    void PSR(); // Push Register
+    void POP(); // Pop to Register
+    void INC(); // Increment Register
+    void DEC(); // Decrement Register
+    void ADI(); // ADD to a register a Immediate value
+    void ADA(); // ADD to a register a Absolute value
+    void ADR(); // ADD to a register a register value
     void SUI();
     void SUA();
     void SUR();
@@ -81,8 +80,8 @@ private:
     void JNO();
     void JSR();
     void RTS();
-    void OUT();
-    void HLT();
+    void OUT(); // Print a Register value
+    void HLT(); // Halt the CPU
 private:
     Bus bus;
     Flags flags;
