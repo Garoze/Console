@@ -38,11 +38,11 @@ private:
     void STR(); // Store Register
     void INC(); // Increment Register
     void DEC(); // Decrement Register
-    void SHL();
-    void SHR();
-    void AND();
-    void BOR();
-    void XOR();
+    void SHL(); // Shift Register Left
+    void SHR(); // Shift Register Right
+    void AND(); // And Register
+    void BOR(); // Or Register
+    void XOR(); // Xor Register
     void NOT();
     void PSI();
     void PSA();

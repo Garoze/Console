@@ -21,6 +21,13 @@ CPU::CPU()
     // Arithmetic Opcodes //
     opcode_t[Opcodes::INC] = &CPU::INC;
     opcode_t[Opcodes::DEC] = &CPU::DEC;
+    // Bitwise Opcodes //
+    opcode_t[Opcodes::SHL] = &CPU::SHL;
+    opcode_t[Opcodes::SHR] = &CPU::SHR;
+    opcode_t[Opcodes::AND] = &CPU::AND;
+    opcode_t[Opcodes::BOR] = &CPU::BOR;
+    opcode_t[Opcodes::XOR] = &CPU::XOR;
+    opcode_t[Opcodes::NOT] = &CPU::NOT;
     // Stack Opcodes //
     opcode_t[Opcodes::PSI] = &CPU::PSI;
     opcode_t[Opcodes::PSA] = &CPU::PSA;
@@ -171,6 +178,48 @@ void CPU::DEC()
 {
     auto r = fetch8();
     --registers.R[r];
+}
+
+void CPU::SHL()
+{
+    auto r = fetch8();
+    auto value = fetch8();
+    registers.R[r] <<= value;
+}
+
+void CPU::SHR()
+{
+    auto r = fetch8();
+    auto value = fetch8();
+    registers.R[r] >>= value;
+}
+
+void CPU::AND()
+{
+    auto r = fetch8();
+    auto value = fetch8();
+    registers.R[r] &= value;
+}
+
+void CPU::BOR()
+{
+    auto r = fetch8();
+    auto value = fetch8();
+    registers.R[r] |= value;
+}
+
+void CPU::XOR()
+{
+    auto r = fetch8();
+    auto value = fetch8();
+    registers.R[r] ^= value;
+}
+
+void CPU::NOT()
+{
+    auto r = fetch8();
+    auto value = registers.R[r];
+    registers.R[r] = ~value;
 }
 
 void CPU::PSI()
