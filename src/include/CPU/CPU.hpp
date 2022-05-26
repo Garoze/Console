@@ -73,8 +73,8 @@ private:
     void JNC();
     void JMO();
     void JNO();
-    void JSR();
-    void RTS();
+    void JSR(); // Jump to subrotine
+    void RTS(); // Return from subrotine
     void OUT(); // Print a Register value
     void HLT(); // Halt the CPU
 private:

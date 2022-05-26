@@ -58,6 +58,9 @@ CPU::CPU()
     opcode_t[Opcodes::CMI] = &CPU::CMI;
     opcode_t[Opcodes::CMA] = &CPU::CMA;
     opcode_t[Opcodes::CMR] = &CPU::CMR;
+    // Rotine Opcodes //
+    opcode_t[Opcodes::JSR] = &CPU::JSR;
+    opcode_t[Opcodes::RTS] = &CPU::RTS;
     // OUT //
     opcode_t[Opcodes::OUT] = &CPU::OUT;
     // HLT //
@@ -428,6 +431,19 @@ void CPU::CMR()
     if (flags.debug) printf("R%d, R%d", dst, src);
     flags.Z = registers.R[dst] == registers.R[src];
     flags.V = registers.R[dst] < registers.R[src];
+}
+
+void CPU::JSR()
+{
+    auto address = fetch16();
+    stackPush(registers.PC);
+    if (flags.debug) printf("$%04X", address);
+    registers.PC = address;
+}
+
+void CPU::RTS()
+{
+    registers.PC = stackPop();
 }
 
 void CPU::OUT()
