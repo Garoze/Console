@@ -176,7 +176,7 @@ void CPU::SHL()
 {
     auto r = fetch8();
     auto value = fetch8();
-    if (flags.debug) printf("SHL R%d, #%02X", r, value);
+    if (flags.debug) printf("R%d, #%02X", r, value);
     registers.R[r] <<= value;
 }
 
@@ -184,7 +184,7 @@ void CPU::SHR()
 {
     auto r = fetch8();
     auto value = fetch8();
-    if (flags.debug) printf("SHR R%d, #%02X", r, value);
+    if (flags.debug) printf("R%d, #%02X", r, value);
     registers.R[r] >>= value;
 }
 
@@ -192,7 +192,7 @@ void CPU::AND()
 {
     auto r = fetch8();
     auto value = fetch8();
-    if (flags.debug) printf("AND R%d, #%02X", r, value);
+    if (flags.debug) printf("R%d, #%02X", r, value);
     registers.R[r] &= value;
 }
 
@@ -200,7 +200,7 @@ void CPU::BOR()
 {
     auto r = fetch8();
     auto value = fetch8();
-    if (flags.debug) printf("BOR R%d, #%02X", r, value);
+    if (flags.debug) printf("R%d, #%02X", r, value);
     registers.R[r] |= value;
 }
 
@@ -208,7 +208,7 @@ void CPU::XOR()
 {
     auto r = fetch8();
     auto value = fetch8();
-    if (flags.debug) printf("XOR R%d, #%02X", r, value);
+    if (flags.debug) printf("R%d, #%02X", r, value);
     registers.R[r] ^= value;
 }
 
@@ -216,7 +216,7 @@ void CPU::NOT()
 {
     auto r = fetch8();
     auto value = registers.R[r];
-    if (flags.debug) printf("NOT R%d", r);
+    if (flags.debug) printf("R%d", r);
     registers.R[r] = ~value;
 }
 
@@ -250,14 +250,14 @@ void CPU::POP()
 void CPU::INC()
 {
     auto r = fetch8();
-    if (flags.debug) printf("INC R%d", r);
+    if (flags.debug) printf("R%d", r);
     ++registers.R[r];
 }
 
 void CPU::DEC()
 {
     auto r = fetch8();
-    if (flags.debug) printf("DEC R%d", r);
+    if (flags.debug) printf("R%d", r);
     --registers.R[r];
 }
 
@@ -265,7 +265,7 @@ void CPU::ADI()
 {
     auto r = fetch8();
     auto value = fetch16();
-    if (flags.debug) printf("ADI R%d, #%04X", r, value);
+    if (flags.debug) printf("R%d, #%04X", r, value);
     registers.R[r] += value;
 }
 
@@ -273,7 +273,7 @@ void CPU::ADA()
 {
     auto r = fetch8();
     auto address = fetch16();
-    if (flags.debug) printf("ADA R%d, [$%04X]", r, address);
+    if (flags.debug) printf("R%d, [$%04X]", r, address);
     registers.R[r] += bus.read16(address);
 }
 
@@ -281,7 +281,7 @@ void CPU::ADR()
 {
     auto dst = fetch8();
     auto src = fetch8();
-    if (flags.debug) printf("ADR R%d, R%d", dst, src);
+    if (flags.debug) printf("R%d, R%d", dst, src);
     registers.R[dst] = registers.R[src];
 }
 

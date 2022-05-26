@@ -10,7 +10,7 @@ int main()
 
     const std::vector<std::uint8_t> code = {
         (int)Opcodes::LDI, 0x01, 0x01, 0x00,
-        (int)Opcodes::SHL, 0x01, 0x01,
+        (int)Opcodes::ADI, 0x01, 0x01, 0x00,
         (int)Opcodes::OUT, 0x01,
         (int)Opcodes::HLT,
     };
